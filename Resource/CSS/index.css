@@ -1,0 +1,43 @@
+body {
+    -webkit-touch-callout:none;  /*系统默认菜单被禁用*/   
+    -webkit-user-select:none; /*webkit浏览器*/   
+    -khtml-user-select:none; /*早期浏览器*/   
+    -moz-user-select:none;/*火狐*/   
+    -ms-user-select:none; /*IE10*/   
+    user-select:none;
+}
+span.car {
+    position: absolute;
+    font-size: 20px;
+}
+
+
+button.top {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-left: 100px
+}
+
+button.left {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: 100px;
+}
+
+button.right {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: 100px;
+    margin-left: 200px
+}
+
+button.bottom {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: 200px;
+    margin-left: 100px
+}
