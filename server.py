@@ -128,5 +128,5 @@ if __name__ == "__main__":
     car = FourWheelDriveCar()
     PORT_NUM = 8899  # 后端监听端口
     server.run(port=PORT_NUM, debug=True)
-    car.stop() 
+    car.stop()
     print('Exit...')
