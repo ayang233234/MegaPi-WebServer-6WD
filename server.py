@@ -107,21 +107,21 @@ server = Flask(__name__)
 def car_control(act: int):
     if act == 1:
         car.forward()  # 参数1为前进
-        return 1
+        return "1"
     if act == 2:
         car.backward()  # 参数2为后退
-        return 1
+        return "1"
     if act == 3:
         car.turnLeft()  # 参数3为左转
-        return 1
+        return "1"
     if act == 4:
         car.turnRight()  # 参数4为右转
-        return 1
+        return "1"
     if act == 0:
         car.stop()  # 参数0为停车
-        return 1
+        return "1"
     else:
-        return -1
+        return "-1"
 
 
 if __name__ == "__main__":
