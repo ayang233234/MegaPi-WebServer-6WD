@@ -146,4 +146,6 @@ if __name__ == "__main__":
     server.run(port=PORT_NUM, debug=True)
     print('Exit...')
     car.stop()
+    car.PowerModule.close()
     print("Stopped")
+    sleep(3)
