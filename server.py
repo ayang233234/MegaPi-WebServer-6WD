@@ -5,7 +5,7 @@ from megapi import *
 class FourWheelDriveCar():
     # 支持六个车轱辘
 
-    def __init__(self,port):
+    def __init__(self, port):
         self.PowerModule = MegaPi()
         self.PowerModule.start(port)
         self.MotorReset()
@@ -51,8 +51,7 @@ class FourWheelDriveCar():
         self.PowerModule.motorRun(3, 50)
         self.PowerModule.motorRun(11, 50)
 
-
-# 后退
+    # 后退
     def backward(self):
         self.MotorReset()
         self.PowerModule.motorRun(1, -50)
@@ -61,7 +60,6 @@ class FourWheelDriveCar():
         self.PowerModule.motorRun(10, -50)
         self.PowerModule.motorRun(3, -50)
         self.PowerModule.motorRun(11, -50)
-
 
     # 左转
     def turnLeft(self):
@@ -80,7 +78,6 @@ class FourWheelDriveCar():
 
         self.PowerModule.servoRun(6, 2, LeftAngle)
 
-
     # 右转
     def turnRight(self):
         self.MotorReset()
@@ -98,17 +95,12 @@ class FourWheelDriveCar():
 
         self.PowerModule.servoRun(6, 2, RightAngle)
 
-
     def stop(self):
         self.MotorReset()
         self.Servoinit()
 
 
-
-
 server = Flask(__name__)
-
-
 
 
 @server.route("/car/control/<int:act>", methods=["GET"])
@@ -138,5 +130,4 @@ if __name__ == "__main__":
     server.run(port=PORT_NUM, debug=True)
     print('Exit...')
     car.stop()
-    car.close()
     print("Stopped")
