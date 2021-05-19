@@ -143,7 +143,7 @@ if __name__ == "__main__":
     car = FourWheelDriveCar('/dev/ttyUSB0')
 
     PORT_NUM = 8899  # 后端监听端口
-    server.run(port=PORT_NUM, debug=True)
+    server.run("0.0.0.0",port=PORT_NUM, debug=True)
     print('Exit...')
     car.stop()
     car.PowerModule.close()
