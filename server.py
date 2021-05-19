@@ -9,7 +9,8 @@ class FourWheelDriveCar():
         self.PowerModule = MegaPi()
         self.PowerModule.start(port)
         self.MotorReset()
-        self.Servoinit()
+        self.ServoReset()
+        self.test()
 
     # config = configparser.ConfigParser()
     # config.read("config.ini")
@@ -17,7 +18,8 @@ class FourWheelDriveCar():
 
     # 重置
     # 舵机角度初始化
-    def Servoinit(self):
+    def ServoReset(self):
+        print("init")
         self.PowerModule.servoRun(8, 1, 90)
         self.PowerModule.servoRun(8, 1, 90)
         self.PowerModule.servoRun(8, 2, 90)
@@ -32,8 +34,21 @@ class FourWheelDriveCar():
         self.PowerModule.servoRun(6, 2, 90)
 
         # 将所有电机速度清零
-
+    def test(self):
+        self.forward()
+        sleep(1)
+        self.backward()
+        sleep(1)
+        self.turnLeft()
+        sleep(1)
+        self.turnRight()
+        sleep(1)
+        self.MotorReset()
+        sleep(1)
+        self.ServoReset()
+        sleep(1)
     def MotorReset(self):
+        print("reset")
         self.PowerModule.motorRun(1, 0)
         self.PowerModule.motorRun(9, 0)
         self.PowerModule.motorRun(2, 0)
@@ -43,6 +58,7 @@ class FourWheelDriveCar():
 
     # 前进
     def forward(self):
+        print("forward")
         self.MotorReset()
         self.PowerModule.motorRun(1, 50)
         self.PowerModule.motorRun(9, 50)
@@ -53,6 +69,7 @@ class FourWheelDriveCar():
 
     # 后退
     def backward(self):
+        print("backward")
         self.MotorReset()
         self.PowerModule.motorRun(1, -50)
         self.PowerModule.motorRun(9, -50)
@@ -63,6 +80,7 @@ class FourWheelDriveCar():
 
     # 左转
     def turnLeft(self):
+        print("left")
         self.MotorReset()
         LeftInitAngle = 90
         LeftAngle = LeftInitAngle + 5
@@ -80,24 +98,21 @@ class FourWheelDriveCar():
 
     # 右转
     def turnRight(self):
+        print("right")
         self.MotorReset()
         RightInitAngle = 90
         RightAngle = RightInitAngle - 5
         self.PowerModule.servoRun(8, 1, RightAngle)
-
         self.PowerModule.servoRun(8, 2, RightAngle)
-
         self.PowerModule.servoRun(7, 1, RightAngle)
-
         self.PowerModule.servoRun(7, 2, RightAngle)
-
         self.PowerModule.servoRun(6, 1, RightAngle)
-
         self.PowerModule.servoRun(6, 2, RightAngle)
 
     def stop(self):
+        print("stop")
         self.MotorReset()
-        self.Servoinit()
+        self.ServoReset()
 
 
 server = Flask(__name__)
@@ -126,6 +141,7 @@ def car_control(act: int):
 
 if __name__ == "__main__":
     car = FourWheelDriveCar('/dev/ttyUSB0')
+
     PORT_NUM = 8899  # 后端监听端口
     server.run(port=PORT_NUM, debug=True)
     print('Exit...')
